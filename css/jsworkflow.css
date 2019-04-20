@@ -1,0 +1,81 @@
+body {
+    margin: 0;
+    pading: 0;
+    text-align:center;/** 设置水平方向居中 */
+    vertical-align:middle;/** 设置垂直方向居中 */
+    font-family: Arial, sans-serif, Helvetica, Tahoma;
+    font-size: 12px;
+    line-height: 1.5;
+    color: black;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACCCAMAAAD2dTMiAAAABlBMVEX////a2vL9uN09AAAA3UlEQVR4nO3VIQ4AQRACwd3/f/rUatSlSWjUOCqYOeflll8FBIECu68CgsB/rlue/gXxYoEC6WKB80D6U6T0L4gXCxRIFwucB9KfIqV/QbxYoEC6WOA8kP4UKf0L4sUCBdLFAueB9KdI6V8QLxYokC4WOA+kP0VK/4J4sUCBdLHAeSD9KVL6F8SLBQqkiwXOA+lPkdK/IF4sUCBdLHAeSH+KlP4F8WKBAuligfNA+lOk9C+IFwsUSBcLnAfSnyKlf0G8WKBAuljgPJD+FCn9C+LFAgXSxQLngfSnSPkAtCAPcZpa2JAAAAAASUVORK5CYII=);
+}
+
+.node {
+    width: 70px;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid #fff;
+}
+
+.mover {
+    border: 1px solid #ddd;
+    background-color: #ddd;
+}
+
+.selected {
+    background-color: #ddd;
+}
+
+#jsworkflow_props th {
+    letter-spacing: 2px;
+    text-align:center;/** 设置水平方向居中 */
+    vertical-align:middle;/** 设置垂直方向居中 */
+    padding: 6px;
+    background: #ddd;
+}
+
+#jsworkflow_props td {
+    background: #fff;
+    padding: 6px;
+}
+
+#pointer {
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#path {
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#task {
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#state {
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+td input {
+    background-color: #ffffff;
+    margin-top: -1px;
+    margin-bottom: -1px;
+    height: 22px;
+    width: 100%;
+    border: none;
+}
+td textarea {
+    background-color: #ffffff;
+    margin-top: -1px;
+    margin-bottom: -1px;
+    width: 98%;
+    border: none;
+}
+th  {
+    width: 30%;
+    text-align:center;/** 设置水平方向居中 */
+    vertical-align:middle;/** 设置垂直方向居中 */
+}

@@ -1,0 +1,73 @@
+<!--
+本页面引用的js因为兼容性问题不可升级
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>流程设计</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <link type="text/css" href="css/jquery-ui-1.8.4.custom.css" rel="stylesheet" />
+    <link type="text/css" href="css/jsworkflow.css" rel="stylesheet" />
+    <script type="text/javascript" src="js/raphael-2.0.0/raphael.min.js"></script>
+    <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.8.4.custom.min.js"></script>
+    <script type="text/javascript" src="js/jsworkflow.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        var data='{"nodes":{"node1":{"type":"start","text":{"text":"开始"},"attr":{"x":171,"y":291,"width":50,"height":50,"r":30},"props":{"text":{"value":"开始"}}},"node2":{"type":"task","text":{"text":"任务"},"attr":{"x":374,"y":293,"width":80,"height":50,"r":0},"props":{"text":{"value":"任务"}}},"node3":{"type":"judge","text":{"text":"判断"},"attr":{"x":595,"y":290,"width":55,"height":55,"r":0},"props":{"text":{"value":"判断"},"type":{"value":"nojoint"}}},"node4":{"type":"end","text":{"text":"结束"},"attr":{"x":831,"y":292,"width":50,"height":50,"r":30},"props":{"text":{"value":"结束"}}}},"paths":{"path5":{"from":"node1","to":"node2","dots":"[]","text":{"text":"连接"},"textPos":{"x":0,"y":-10},"props":{"type":{"value":"joint"}}},"path6":{"from":"node2","to":"node3","dots":"[]","text":{"text":"连接"},"textPos":{"x":0,"y":-10},"props":{"type":{"value":"joint"}}},"path7":{"from":"node3","to":"node4","dots":"[]","text":{"text":"是"},"textPos":{"x":0,"y":-10},"props":{"type":{"value":"yes"}}},"path8":{"from":"node3","to":"node1","dots":"[{x:623,y:70},{x:196,y:70}]","text":{"text":"否"},"textPos":{"x":0,"y":-10},"props":{"type":{"value":"no"}}}},"props":{"props":{"name":{"value":"初级单步流程"},"desc":{"value":"初级单步流程描述内容，初级单步流程描述内容初级单步流程描述内容初级单步流程描述内容初级单步流程描述内容"}}}}';
+        $('#flow')
+            .jsworkflow({
+                width: 2, //幕布宽度为页面宽度的几倍。不设置属性时默认为1.5
+                height: 2, //幕布高度为页面高度的几倍。不设置属性时默认为1.5
+                restore: data, //流程json数据或者流程json数据请求url
+                tools: {
+                    save: {
+                        onclick: function(data) {
+                            alert(data);
+                        }
+                    }
+                }
+            });
+    });
+    </script>
+</head>
+
+<body>
+    <div id="jsworkflow_tools" style="position: fixed; top: 10px; left: 10px; background-color: #fff; width: 70px; cursor: default; padding: 3px;vertical-align: middle; z-index:1;" class="ui-widget-content">
+        <div id="jsworkflow_tools_handle" style="text-align: center;" class="ui-widget-header">工具集</div>
+        <div class="node" id="jsworkflow_save">
+            <img src="image/save.gif" align="left" /><b>保存</b></div>
+        <div>
+            <hr/>
+        </div>
+        <div class="node selectable" id="pointer">
+            <img src="image/select16.gif" width="17px" align="left" />选择
+        </div>
+        <div class="node selectable" id="path">
+            <img src="image/flow_sequence.png" width="18px" align="left" />连接
+        </div>
+        <div>
+            <hr/>
+        </div>
+        <div class="node state" id="start" type="start">
+            <img src="image/start_event_empty.png" width="18px" align="left" /><b>开始</b></div>
+        <div class="node state" id="task" type="task">
+            <img src="image/task_empty.png" width="16px" align="left" />任务
+        </div>
+        <div class="node state" id="judge" type="judge">
+            <img src="image/gateway_parallel.png" width="18px" align="left" />判断
+        </div>
+        <div class="node state" id="end" type="end">
+            <img src="image/end_event_terminate.png" width="18px" align="left" />结束
+        </div>
+    </div>
+    <div id="jsworkflow_props" style="position: fixed; top: 10px; right: 10px; background-color: #fff; width: 20%; padding: 3px; z-index:1;" class="ui-widget-content">
+        <div id="jsworkflow_props_handle" class="ui-widget-header">&nbsp;属性</div>
+        <table border="1" width="100%" cellpadding="0" cellspacing="0"></table>
+    </div>
+    <div id="flow"></div>
+</body>
+
+</html>
