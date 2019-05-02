@@ -1,14 +1,14 @@
-(function (zyb) {
+(function(zyb) {
     var flow = {};
     flow.config = {
-        editable: true,//流程幕布是否可编辑，默认为true。false时不可删除，不可拖动，但是可以点击查看属性
+        editable: true, //流程幕布是否可编辑，默认为true。false时不可删除，不可拖动，但是可以点击查看属性
         lineHeight: 15,
-        basePath: "",//流程图文件夹相对路径前缀，这个路径对幕布上的节点图片有效，工具集路径为写死在flow.html文件夹
-        width: 1.5,//幕布宽度为页面宽度的几倍。不设置属性时默认为1，5
-        height: 1.5,//幕布高度为页面高度的几倍。不设置属性时默认为1，5
-        restore: '',//初始化流程json串
-        restoretype: 'json',//前台初始化类型，json、url
-        node: {//全局节点属性设置
+        basePath: "", //流程图文件夹相对路径前缀，这个路径对幕布上的节点图片有效，工具集路径为写死在flow.html文件夹
+        width: 1.5, //幕布宽度为页面宽度的几倍。不设置属性时默认为1，5
+        height: 1.5, //幕布高度为页面高度的几倍。不设置属性时默认为1，5
+        restore: '', //初始化流程json串
+        restoretype: 'json', //前台初始化类型，json、url
+        node: { //全局节点属性设置
             attr: {
                 x: 10,
                 y: 10,
@@ -21,29 +21,29 @@
             },
             showType: "text",
             // showType: "image&text",
-            name: {"font-style": "italic"},
-            text: {"font-size": 13},
+            name: { "font-style": "italic" },
+            text: { "font-size": 13 },
             margin: 5,
             props: [],
             img: {}
         },
-        path: {//连接线属性设置
+        path: { //连接线属性设置
             attr: {
-                path: {path: "M10 10L100 100", stroke: "#808080", fill: "none", "stroke-width": 2},
+                path: { path: "M10 10L100 100", stroke: "#808080", fill: "none", "stroke-width": 2 },
                 arrow: {
                     path: "M10 10L10 10",
                     stroke: "#000000",
                     fill: "#000000",
                     // "stroke-width": 2,
-                    radius: 5//箭头大小
+                    radius: 5 //箭头大小
                 },
-                fromDot: {width: 5, height: 5, stroke: "#fff", fill: "#000", cursor: "move", "stroke-width": 2},
-                toDot: {width: 5, height: 5, stroke: "#fff", fill: "#000", cursor: "move", "stroke-width": 2},
-                bigDot: {width: 5, height: 5, stroke: "#fff", fill: "#000", cursor: "move", "stroke-width": 2},
-                smallDot: {width: 5, height: 5, stroke: "#fff", fill: "#000", cursor: "move", "stroke-width": 2}
+                fromDot: { width: 5, height: 5, stroke: "#fff", fill: "#000", cursor: "move", "stroke-width": 2 },
+                toDot: { width: 5, height: 5, stroke: "#fff", fill: "#000", cursor: "move", "stroke-width": 2 },
+                bigDot: { width: 5, height: 5, stroke: "#fff", fill: "#000", cursor: "move", "stroke-width": 2 },
+                smallDot: { width: 5, height: 5, stroke: "#fff", fill: "#000", cursor: "move", "stroke-width": 2 }
             },
-            text: {text: "连接", cursor: "move", "font-size": 13, background: "#ffffff"},
-            textPos: {x: 0, y: -10},
+            text: { text: "连接", cursor: "move", "font-size": 13, background: "#ffffff" },
+            textPos: { x: 0, y: -10 },
             props: {
                 /*text: {
                     name: "text", label: "显示", value: "a", editor: function () {
@@ -51,21 +51,28 @@
                     }
                 },*/
                 type: {
-                    name: 'linetype', label: '类型', value: 'joint', editor: function () {
+                    name: 'linetype',
+                    label: '类型',
+                    value: 'joint',
+                    editor: function() {
                         return new $.jsworkflow.editors.selectEditor([
-                            {'name': '连接', 'value': 'joint'},
-                            {'name': '是', 'value': 'yes'},
-                            {'name': '否', 'value': 'no'}]);
+                            { 'name': '连接', 'value': 'joint' },
+                            { 'name': '是', 'value': 'yes' },
+                            { 'name': '否', 'value': 'no' }
+                        ]);
                     }
                 }
             }
         },
         tools: {
-            attr: {left: 10, top: 10}, pointer: {}, path: {}, nodes: {
+            attr: { left: 10, top: 10 },
+            pointer: {},
+            path: {},
+            nodes: {
                 //配置节点属性
                 'start': {
                     type: 'start',
-                    node: {//节点属性设置
+                    node: { //节点属性设置
                         attr: {
                             x: 10,
                             y: 10,
@@ -80,18 +87,21 @@
                         },
                         // showType: "image&text",
                         showType: "text",
-                        name: {"font-style": "italic"},
-                        text: {"font-size": 13},
+                        name: { "font-style": "italic" },
+                        text: { "font-size": 13 },
                         margin: 5,
                         props: [],
                         img: {}
                     },
-                    name: {text: '<<start>>'},
-                    text: {text: '开始'},
-                    img: {src: 'image/start_event_empty.png', width: 55, height: 55},
+                    name: { text: '<<start>>' },
+                    text: { text: '开始' },
+                    img: { src: 'image/start_event_empty.png', width: 55, height: 55 },
                     props: {
                         text: {
-                            name: 'text', label: '节点名称', value: '开始', editor: function () {
+                            name: 'text',
+                            label: '节点名称',
+                            value: '开始',
+                            editor: function() {
                                 return new $.jsworkflow.editors.textEditor();
                             }
                         }
@@ -99,7 +109,7 @@
                 },
                 'end': {
                     type: 'end',
-                    node: {//节点属性设置
+                    node: { //节点属性设置
                         attr: {
                             x: 10,
                             y: 10,
@@ -113,18 +123,21 @@
                         },
                         // showType: "image&text",
                         showType: "text",
-                        name: {"font-style": "italic"},
-                        text: {"font-size": 13},
+                        name: { "font-style": "italic" },
+                        text: { "font-size": 13 },
                         margin: 5,
                         props: [],
                         img: {}
                     },
-                    name: {text: '<<end>>'},
-                    text: {text: '结束'},
-                    img: {src: 'image/end_event_terminate.png', width: 55, height: 55},
+                    name: { text: '<<end>>' },
+                    text: { text: '结束' },
+                    img: { src: 'image/end_event_terminate.png', width: 55, height: 55 },
                     props: {
                         text: {
-                            name: 'text', label: '节点名称', value: '结束', editor: function () {
+                            name: 'text',
+                            label: '节点名称',
+                            value: '结束',
+                            editor: function() {
                                 return new $.jsworkflow.editors.textEditor();
                             }
                         }
@@ -132,7 +145,7 @@
                 },
                 'judge': {
                     type: 'judge',
-                    node: {//节点属性设置
+                    node: { //节点属性设置
                         attr: {
                             x: 10,
                             y: 10,
@@ -147,33 +160,40 @@
                         },
                         // showType: "image&text",
                         showType: "text",
-                        name: {"font-style": "italic"},
-                        text: {"font-size": 13},
+                        name: { "font-style": "italic" },
+                        text: { "font-size": 13 },
                         margin: 5,
                         props: [],
                         img: {}
                     },
-                    name: {text: '<<judge>>'},
-                    text: {text: '判断'},
-                    img: {src: 'image/gateway_parallel.png', width: 55, height: 55},
+                    name: { text: '<<judge>>' },
+                    text: { text: '判断' },
+                    img: { src: 'image/gateway_parallel.png', width: 55, height: 55 },
                     props: {
                         text: {
-                            name: 'text', label: '节点名称', value: '判断', editor: function () {
+                            name: 'text',
+                            label: '节点名称',
+                            value: '判断',
+                            editor: function() {
                                 return new $.jsworkflow.editors.textEditor();
                             }
                         },
                         type: {
-                            name: 'judgetype', label: '节点类型', value: 'nojoint', editor: function () {
+                            name: 'judgetype',
+                            label: '节点类型',
+                            value: 'nojoint',
+                            editor: function() {
                                 return new $.jsworkflow.editors.selectEditor([
-                                    {'name': '非联合审批', 'value': 'nojoint'},
-                                    {'name': '联合审批', 'value': 'joint'}]);
+                                    { 'name': '非联合审批', 'value': 'nojoint' },
+                                    { 'name': '联合审批', 'value': 'joint' }
+                                ]);
                             }
                         }
                     }
                 },
                 'task': {
                     type: 'task',
-                    node: {//节点属性设置
+                    node: { //节点属性设置
                         attr: {
                             x: 10,
                             y: 10,
@@ -187,18 +207,21 @@
                         },
                         // showType: "image&text",
                         showType: "text",
-                        name: {"font-style": "italic"},
-                        text: {"font-size": 13},
+                        name: { "font-style": "italic" },
+                        text: { "font-size": 13 },
                         margin: 5,
                         props: [],
                         img: {}
                     },
-                    name: {text: '<<task>>'},
-                    text: {text: '任务'},
-                    img: {src: 'image/task_empty.png', width: 85, height: 55},
+                    name: { text: '<<task>>' },
+                    text: { text: '任务' },
+                    img: { src: 'image/task_empty.png', width: 85, height: 55 },
                     props: {
                         text: {
-                            name: 'text', label: '节点名称', value: '任务', editor: function () {
+                            name: 'text',
+                            label: '节点名称',
+                            value: '任务',
+                            editor: function() {
                                 return new $.jsworkflow.editors.textEditor();
                             }
                         }
@@ -207,14 +230,21 @@
             }
         },
         props: {
-            attr: {top: 10, right: 10}, props: {
+            attr: { top: 10, right: 10 },
+            props: {
                 name: {
-                    name: 'name', label: '名称', value: '新建流程', editor: function () {
+                    name: 'name',
+                    label: '名称',
+                    value: '新建流程',
+                    editor: function() {
                         return new $.jsworkflow.editors.inputEditor();
                     }
                 },
                 desc: {
-                    name: 'desc', label: '描述', value: '', editor: function () {
+                    name: 'desc',
+                    label: '描述',
+                    value: '',
+                    editor: function() {
                         return new $.jsworkflow.editors.textareaEditor();
                     }
                 }
@@ -222,7 +252,7 @@
         }
     };
     flow.util = {
-        isLine: function (g, f, e) {
+        isLine: function(g, f, e) {
             var d, c;
             if ((g.x - e.x) == 0) {
                 d = 1
@@ -236,18 +266,18 @@
             }
             return false
         },
-        center: function (d, c) {
-            return {x: (d.x - c.x) / 2 + c.x, y: (d.y - c.y) / 2 + c.y}
+        center: function(d, c) {
+            return { x: (d.x - c.x) / 2 + c.x, y: (d.y - c.y) / 2 + c.y }
         },
-        nextId: (function () {
+        nextId: (function() {
             var c = 0;
-            return function () {
+            return function() {
                 return ++c
             }
         })(),
-        connPoint: function (j, d) {
+        connPoint: function(j, d) {
             var c = d,
-                e = {x: j.x + j.width / 2, y: j.y + j.height / 2};
+                e = { x: j.x + j.width / 2, y: j.y + j.height / 2 };
             var l = (e.y - c.y) / (e.x - c.x);
             l = isNaN(l) ? 0 : l;
             var k = j.height / j.width;
@@ -273,9 +303,9 @@
                     }
                 }
             }
-            return {x: parseInt(i), y: parseInt(g)}
+            return { x: parseInt(i), y: parseInt(g) }
         },
-        arrow: function (l, k, d) {
+        arrow: function(l, k, d) {
             var g = Math.atan2(l.y - k.y, k.x - l.x) * (180 / Math.PI);
             var h = k.x - d * Math.cos(g * (Math.PI / 180));
             var f = k.y + d * Math.sin(g * (Math.PI / 180));
@@ -283,10 +313,10 @@
             var j = f - d * Math.sin((g + 120) * (Math.PI / 180));
             var c = h + d * Math.cos((g + 240) * (Math.PI / 180));
             var i = f - d * Math.sin((g + 240) * (Math.PI / 180));
-            return [k, {x: e, y: j}, {x: c, y: i}]
+            return [k, { x: e, y: j }, { x: c, y: i }]
         }
     };
-    flow.node = function (p, m) {
+    flow.node = function(p, m) {
         var u = this,
             g = "node" + flow.util.nextId(),
             E = zyb.extend(true, {}, flow.config.node, p),
@@ -322,49 +352,51 @@
         }
         n = C.text(E.attr.x + E.img.width + (E.attr.width - E.img.width) / 2, E.attr.y + flow.config.lineHeight / 2, E.name.text).hide().attr(E.name);
         f = C.text(E.attr.x + E.img.width + (E.attr.width - E.img.width) / 2, E.attr.y + (E.attr.height - flow.config.lineHeight) / 2 + flow.config.lineHeight, E.text.text).hide().attr(E.text);
-        t.drag(function (dx, dy, cx, cy) {
+        t.drag(function(dx, dy, cx, cy) {
             E.attr.cx = cx;
             E.attr.cy = cy;
             A(dx, dy);
-        }, function () {
+        }, function() {
             z()
-        }, function () {
+        }, function() {
             l()
         });
         if (typeof(p.img) != "undefined" && typeof(p.img.src) != "undefined") {
-            e.drag(function (dx, dy, cx, cy) {
+            e.drag(function(dx, dy, cx, cy) {
                 E.attr.cx = cx;
                 E.attr.cy = cy;
                 A(dx, dy);
-            }, function () {
+            }, function() {
                 z()
-            }, function () {
+            }, function() {
                 l()
             });
         }
-        n.drag(function (dx, dy, cx, cy) {
+        n.drag(function(dx, dy, cx, cy) {
             E.attr.cx = cx;
             E.attr.cy = cy;
             A(dx, dy);
-        }, function () {
+        }, function() {
             z()
-        }, function () {
+        }, function() {
             l()
         });
-        f.drag(function (dx, dy, cx, cy) {
+        f.drag(function(dx, dy, cx, cy) {
             E.attr.cx = cx;
             E.attr.cy = cy;
             A(dx, dy);
-        }, function () {
+        }, function() {
             z()
-        }, function () {
+        }, function() {
             l()
         });
         //拖动位置计算
-        var A = function (F, r) {
+        var A = function(F, r) {
             if (!flow.config.editable) {
                 return
             }
+            // console.log(x + '--' + v);
+            // console.log(F + '--' + r);
             var o = (x + F);
             var G = (v + r);
             q.x = o - E.margin;
@@ -372,22 +404,22 @@
             B()
         };
         //拖动时特效
-        var z = function () {
+        var z = function() {
             x = t.attr("x");
             v = t.attr("y");
-            t.attr({opacity: 0.5});
+            t.attr({ opacity: 0.5 });
             if (typeof(p.img) != "undefined" && typeof(p.img.src) != "undefined") {
-                e.attr({opacity: 0.5});
+                e.attr({ opacity: 0.5 });
             }
-            f.attr({opacity: 0.5})
+            f.attr({ opacity: 0.5 })
         };
         //拖动后特效恢复
-        var l = function () {
-            t.attr({opacity: 1});
+        var l = function() {
+            t.attr({ opacity: 1 });
             if (typeof(p.img) != "undefined" && typeof(p.img.src) != "undefined") {
-                e.attr({opacity: 1});
+                e.attr({ opacity: 1 });
             }
-            f.attr({opacity: 1});
+            f.attr({ opacity: 1 });
         };
 
 
@@ -403,78 +435,70 @@
            i.r = C.rect(0, 0, h, h).attr({fill: "#000", stroke: "#fff", cursor: "w-resize"}).hide();
    */
         //上中
-        i.t = C.rect(0, 0, h, h).attr({fill: "#000", stroke: "#fff", cursor: "s-resize"}).hide().drag(function (r, o) {
+        i.t = C.rect(0, 0, h, h).attr({ fill: "#000", stroke: "#fff", cursor: "s-resize" }).hide().drag(function(r, o) {
             D(r, o, "t")
-        }, function () {
+        }, function() {
             k(this.attr("x") + h / 2, this.attr("y") + h / 2, "t")
-        }, function () {
-        });
+        }, function() {});
         //左上
         i.lt = C.rect(0, 0, h, h).attr({
             fill: "#000",
             stroke: "#fff",
             cursor: "nw-resize"
-        }).hide().drag(function (r, o) {
+        }).hide().drag(function(r, o) {
             D(r, o, "lt")
-        }, function () {
+        }, function() {
             k(this.attr("x") + h / 2, this.attr("y") + h / 2, "lt")
-        }, function () {
-        });
+        }, function() {});
         //左中
-        i.l = C.rect(0, 0, h, h).attr({fill: "#000", stroke: "#fff", cursor: "w-resize"}).hide().drag(function (r, o) {
+        i.l = C.rect(0, 0, h, h).attr({ fill: "#000", stroke: "#fff", cursor: "w-resize" }).hide().drag(function(r, o) {
             D(r, o, "l")
-        }, function () {
+        }, function() {
             k(this.attr("x") + h / 2, this.attr("y") + h / 2, "l")
-        }, function () {
-        });
+        }, function() {});
         //左下
         i.lb = C.rect(0, 0, h, h).attr({
             fill: "#000",
             stroke: "#fff",
             cursor: "sw-resize"
-        }).hide().drag(function (r, o) {
+        }).hide().drag(function(r, o) {
             D(r, o, "lb")
-        }, function () {
+        }, function() {
             k(this.attr("x") + h / 2, this.attr("y") + h / 2, "lb")
-        }, function () {
-        });
+        }, function() {});
         //下中
-        i.b = C.rect(0, 0, h, h).attr({fill: "#000", stroke: "#fff", cursor: "s-resize"}).hide().drag(function (r, o) {
+        i.b = C.rect(0, 0, h, h).attr({ fill: "#000", stroke: "#fff", cursor: "s-resize" }).hide().drag(function(r, o) {
             D(r, o, "b")
-        }, function () {
+        }, function() {
             k(this.attr("x") + h / 2, this.attr("y") + h / 2, "b")
-        }, function () {
-        });
+        }, function() {});
         //下右
         i.rb = C.rect(0, 0, h, h).attr({
             fill: "#000",
             stroke: "#fff",
             cursor: "se-resize"
-        }).hide().drag(function (r, o) {
+        }).hide().drag(function(r, o) {
             D(r, o, "rb")
-        }, function () {
+        }, function() {
             k(this.attr("x") + h / 2, this.attr("y") + h / 2, "rb")
-        }, function () {
-        });
+        }, function() {});
         //右中
-        i.r = C.rect(0, 0, h, h).attr({fill: "#000", stroke: "#fff", cursor: "w-resize"}).hide().drag(function (r, o) {
+        i.r = C.rect(0, 0, h, h).attr({ fill: "#000", stroke: "#fff", cursor: "w-resize" }).hide().drag(function(r, o) {
             D(r, o, "r")
-        }, function () {
+        }, function() {
             k(this.attr("x") + h / 2, this.attr("y") + h / 2, "r")
-        }, function () {
-        });
+        }, function() {});
         //右上
         i.rt = C.rect(0, 0, h, h).attr({
             fill: "#000",
             stroke: "#fff",
             cursor: "ne-resize"
-        }).hide().drag(function (r, o) {
+        }).hide().drag(function(r, o) {
             D(r, o, "rt")
-        }, function () {
+        }, function() {
             k(this.attr("x") + h / 2, this.attr("y") + h / 2, "rt")
-        }, function () {
-        });
-        var D = function (F, r, G) {
+        }, function() {});
+        var D = function(F, r, G) {
             var o = _bx + F,
                 H = _by + r;
             switch (G) {
@@ -515,7 +539,7 @@
             }
             B()
         };
-        var k = function (r, o, F) {
+        var k = function(r, o, F) {
             _bx = r;
             _by = o
         };
@@ -526,7 +550,7 @@
         } else {
             nodes = [t.node, f.node, n.node];
         }
-        zyb(nodes).bind("click", function () {
+        zyb(nodes).bind("click", function() {
             //节点点击监控
             /*if (!flow.config.editable) {
                 return
@@ -548,7 +572,7 @@
             return false
         });
         //点击节点显示属性
-        var j = function (o, r) {
+        var j = function(o, r) {
             //节点点击监控
             if (r.getId() == g) {
                 zyb(C).trigger("showprops", [E.props, r])
@@ -557,9 +581,9 @@
             }
         };
         zyb(C).bind("click", j);
-        var c = function (o, F, r) {
+        var c = function(o, F, r) {
             if (r.getId() == g) {
-                f.attr({text: F})
+                f.attr({ text: F })
             }
         };
         zyb(C).bind("textchange", c);
@@ -586,7 +610,8 @@
         }
 
         function B() {
-            if (typeof(E.attr.cx) != 'undefined') {
+            // console.log(E)
+            if (typeof(E.attr.cx) != 'undefined' && (p.type == 'start' || p.type == 'end')) {
                 q.x = E.attr.cx - E.attr.r;
                 q.y = E.attr.cy - E.attr.r;
             }
@@ -598,19 +623,19 @@
             if (typeof(E.attr.cx) != 'undefined') {
                 //给棱形节点添加transform = 'R45'属性
                 if (p.type == 'judge') {
-                    t.attr({x: F, y: r, cx: E.attr.cx, cy: E.attr.cy, width: G, height: o, transform: 'R45'});
+                    t.attr({ x: F, y: r, cx: E.attr.cx, cy: E.attr.cy, width: G, height: o, transform: 'R45' });
                     //节点图形外部边框
                     // s.attr({path: y(), transform: 'R45'});
                 } else {
-                    t.attr({x: F, y: r, cx: E.attr.cx, cy: E.attr.cy, width: G, height: o});
+                    t.attr({ x: F, y: r, cx: E.attr.cx, cy: E.attr.cy, width: G, height: o });
                     // s.attr({path: y()});
                 }
             } else {
                 if (p.type == 'judge') {
-                    t.attr({x: F, y: r, width: G, height: o, transform: 'R45'});
+                    t.attr({ x: F, y: r, width: G, height: o, transform: 'R45' });
                     // s.attr({path: y(), transform: 'R45'});
                 } else {
-                    t.attr({x: F, y: r, width: G, height: o});
+                    t.attr({ x: F, y: r, width: G, height: o });
                     // s.attr({path: y()});
                 }
             }
@@ -618,23 +643,23 @@
             switch (E.showType) {
                 case "image":
                     if (typeof(p.img) != "undefined" && typeof(p.img.src) != "undefined") {
-                        e.attr({x: F, y: r}).show();
+                        e.attr({ x: F, y: r }).show();
                         // e.attr({x: F + (G - E.img.width) / 2, y: r + (o - E.img.height) / 2}).show();
                     }
                     break;
                 case "text":
                     t.show();
-                    f.attr({x: F + G / 2, y: r + o / 2}).show();
+                    f.attr({ x: F + G / 2, y: r + o / 2 }).show();
                     break;
                 case "image&text":
                     t.show();
-                    n.attr({x: F + E.img.width / 2, y: r + flow.config.lineHeight / 2}).show();
+                    n.attr({ x: F + E.img.width / 2, y: r + flow.config.lineHeight / 2 }).show();
                     f.attr({
                         x: F + E.img.width / 2,
                         y: r + (o - flow.config.lineHeight) / 2 + flow.config.lineHeight
                     }).show();
                     if (typeof(p.img) != "undefined" && typeof(p.img.src) != "undefined") {
-                        e.attr({x: F, y: r}).show();
+                        e.attr({ x: F, y: r }).show();
                         // e.attr({x: F + E.img.width / 2, y: r + (o - E.img.height) / 2}).show();
                     }
                     break;
@@ -650,29 +675,29 @@
               i.rt.attr({x: q.x - h / 2 + q.width, y: q.y - h / 2});
   */
             if (p.type == 'judge') {
-                i.t.attr({x: q.x + q.width / 2 - h / 2, y: q.y - h / 2 - h});
+                i.t.attr({ x: q.x + q.width / 2 - h / 2, y: q.y - h / 2 - h });
                 // i.lt.attr({x: q.x - h / 2, y: q.y - h / 2});
-                i.l.attr({x: q.x - h / 2 - h, y: q.y - h / 2 + q.height / 2});
+                i.l.attr({ x: q.x - h / 2 - h, y: q.y - h / 2 + q.height / 2 });
                 // i.lb.attr({x: q.x - h / 2, y: q.y - h / 2 + q.height});
-                i.b.attr({x: q.x - h / 2 + q.width / 2, y: q.y - h / 2 + q.height + h});
+                i.b.attr({ x: q.x - h / 2 + q.width / 2, y: q.y - h / 2 + q.height + h });
                 // i.rb.attr({x: q.x - h / 2 + q.width, y: q.y - h / 2 + q.height});
-                i.r.attr({x: q.x - h / 2 + q.width + h, y: q.y - h / 2 + q.height / 2});
+                i.r.attr({ x: q.x - h / 2 + q.width + h, y: q.y - h / 2 + q.height / 2 });
                 // i.rt.attr({x: q.x - h / 2 + q.width, y: q.y - h / 2});
             } else {
-                i.t.attr({x: q.x + q.width / 2 - h / 2, y: q.y - h / 2});
+                i.t.attr({ x: q.x + q.width / 2 - h / 2, y: q.y - h / 2 });
                 // i.lt.attr({x: q.x - h / 2, y: q.y - h / 2});
-                i.l.attr({x: q.x - h / 2, y: q.y - h / 2 + q.height / 2});
+                i.l.attr({ x: q.x - h / 2, y: q.y - h / 2 + q.height / 2 });
                 // i.lb.attr({x: q.x - h / 2, y: q.y - h / 2 + q.height});
-                i.b.attr({x: q.x - h / 2 + q.width / 2, y: q.y - h / 2 + q.height});
+                i.b.attr({ x: q.x - h / 2 + q.width / 2, y: q.y - h / 2 + q.height });
                 // i.rb.attr({x: q.x - h / 2 + q.width, y: q.y - h / 2 + q.height});
-                i.r.attr({x: q.x - h / 2 + q.width, y: q.y - h / 2 + q.height / 2});
+                i.r.attr({ x: q.x - h / 2 + q.width, y: q.y - h / 2 + q.height / 2 });
                 // i.rt.attr({x: q.x - h / 2 + q.width, y: q.y - h / 2});
             }
             zyb(C).trigger("noderesize", u)
         }
 
         //nodes节点部分拼写
-        this.toJson = function () {
+        this.toJson = function() {
             var r = '{"type":"' + E.type + '","text":{"text":"' + f.attr("text") + '"},"attr":{"x":' + Math.round(t.attr("x")) + ',"y":' + Math.round(t.attr("y")) + ',"width":' + Math.round(t.attr("width")) + ',"height":' + Math.round(t.attr("height")) + ',"r":' + Math.round(t.attr("r")) + '},"props":{';
             for (var o in E.props) {
                 r += '"' + o + '":{"value":"' + E.props[o].value + '"},';
@@ -683,20 +708,20 @@
             r += "}}";
             return r
         };
-        this.restore = function (o) {
+        this.restore = function(o) {
             var r = o;
             E = zyb.extend(true, E, o);
-            f.attr({text: r.text.text});
+            f.attr({ text: r.text.text });
             B()
 
         };
-        this.getBBox = function () {
+        this.getBBox = function() {
             return q
         };
-        this.getId = function () {
+        this.getId = function() {
             return g
         };
-        this.remove = function () {
+        this.remove = function() {
             t.remove();
             f.remove();
             n.remove();
@@ -708,17 +733,17 @@
                 i[o].remove()
             }
         };
-        this.text = function () {
+        this.text = function() {
             return f.attr("text")
         };
-        this.attr = function (o) {
+        this.attr = function(o) {
             if (o) {
                 t.attr(o)
             }
         };
         B()
     };
-    flow.path = function (q, n, u, e) {
+    flow.path = function(q, n, u, e) {
         var v = this,
             z = n,
             B = zyb.extend(true, {}, flow.config.path),
@@ -751,19 +776,19 @@
                     break
             }
             if (r && (M == "big" || M == "small")) {
-                r.drag(function (Q, P) {
+                r.drag(function(Q, P) {
                     C(Q, P)
-                }, function () {
+                }, function() {
                     J()
-                }, function () {
+                }, function() {
                     E()
                 });
-                var C = function (R, Q) {
+                var C = function(R, Q) {
                     var P = (K + R),
                         S = (I + Q);
                     F.moveTo(P, S)
                 };
-                var J = function () {
+                var J = function() {
                     if (M == "big") {
                         K = r.attr("x") + B.attr.bigDot.width / 2;
                         I = r.attr("y") + B.attr.bigDot.height / 2
@@ -773,55 +798,54 @@
                         I = r.attr("y") + B.attr.smallDot.height / 2
                     }
                 };
-                var E = function () {
-                }
+                var E = function() {}
             }
-            this.type = function (P) {
+            this.type = function(P) {
                 if (P) {
                     M = P
                 } else {
                     return M
                 }
             };
-            this.node = function (P) {
+            this.node = function(P) {
                 if (P) {
                     r = P
                 } else {
                     return r
                 }
             };
-            this.left = function (P) {
+            this.left = function(P) {
                 if (P) {
                     o = P
                 } else {
                     return o
                 }
             };
-            this.right = function (P) {
+            this.right = function(P) {
                 if (P) {
                     O = P
                 } else {
                     return O
                 }
             };
-            this.remove = function () {
+            this.remove = function() {
                 o = null;
                 O = null;
                 r.remove()
             };
-            this.pos = function (P) {
+            this.pos = function(P) {
                 if (P) {
                     N = P;
                     if (!isNaN(N.x)) {
-                        r.attr({x: N.x - r.attr("width") / 2, y: N.y - r.attr("height") / 2});
+                        r.attr({ x: N.x - r.attr("width") / 2, y: N.y - r.attr("height") / 2 });
                     }
                     return this
                 } else {
                     return N
                 }
             };
-            this.moveTo = function (Q, T) {
-                this.pos({x: Q, y: T});
+            this.moveTo = function(Q, T) {
+                this.pos({ x: Q, y: T });
                 switch (M) {
                     case "from":
                         if (O && O.right() && O.right().type() == "to") {
@@ -854,7 +878,7 @@
                         if (o && o.left()) {
                             o.pos(flow.util.center(N, o.left().pos()))
                         }
-                        var S = {x: N.x, y: N.y};
+                        var S = { x: N.x, y: N.y };
                         if (flow.util.isLine(o.left().pos(), S, O.right().pos())) {
                             M = "small";
                             r.attr(B.attr.smallDot);
@@ -870,7 +894,7 @@
                         }
                         break;
                     case "small":
-                        if (o && O && !flow.util.isLine(o.pos(), {x: N.x, y: N.y}, O.pos())) {
+                        if (o && O && !flow.util.isLine(o.pos(), { x: N.x, y: N.y }, O.pos())) {
                             M = "big";
                             r.attr(B.attr.bigDot);
                             var P = new p("small", flow.util.center(o.pos(), N), o, o.right());
@@ -900,11 +924,11 @@
             var D, C, E = k.getBBox(),
                 F = s.getBBox(),
                 r, o;
-            r = flow.util.connPoint(E, {x: F.x + F.width / 2, y: F.y + F.height / 2});
+            r = flow.util.connPoint(E, { x: F.x + F.width / 2, y: F.y + F.height / 2 });
             o = flow.util.connPoint(F, r);
-            var st_r = {x: r.x, y: r.y};
-            var st_o = {x: o.x, y: o.y};
-            if (st_node.type == 'judge') {//发出节点为判断节点
+            var st_r = { x: r.x, y: r.y };
+            var st_o = { x: o.x, y: o.y };
+            if (st_node.type == 'judge') { //发出节点为判断节点
                 st_r.x = r.x + 10;
             }
             if (ed_node.type == 'judge') {
@@ -919,11 +943,11 @@
             if (ed_node.type == 'end') {
                 st_o.x = o.x - 5;
             }
-            D = new p("from", st_r, null, new p("small", {x: (st_r.x + st_o.x) / 2, y: (st_r.y + st_o.y) / 2}));
+            D = new p("from", st_r, null, new p("small", { x: (st_r.x + st_o.x) / 2, y: (st_r.y + st_o.y) / 2 }));
             D.right().left(D);
             C = new p("to", st_o, D.right(), null);
             D.right().right(C);
-            this.toPathString = function () {
+            this.toPathString = function() {
                 if (!D) {
                     return ""
                 }
@@ -940,7 +964,7 @@
                 return [I, H]
             };
             //dots数组内x、y坐标拼写
-            this.toJson = function () {
+            this.toJson = function() {
                 var G = "[",
                     H = D;
                 while (H) {
@@ -955,7 +979,7 @@
                 G += "]";
                 return G
             };
-            this.restore = function (H) {
+            this.restore = function(H) {
                 var I = eval(H),
                     J = D.right();
                 //在此遍历dots
@@ -966,13 +990,13 @@
                 }
                 this.hide()
             };
-            this.fromDot = function () {
+            this.fromDot = function() {
                 return D
             };
-            this.toDot = function () {
+            this.toDot = function() {
                 return C
             };
-            this.midDot = function () {
+            this.midDot = function() {
                 var H = D.right(),
                     G = D.right().right();
                 while (G.right() && G.right().right()) {
@@ -981,21 +1005,21 @@
                 }
                 return H
             };
-            this.show = function () {
+            this.show = function() {
                 var G = D;
                 while (G) {
                     G.node().show();
                     G = G.right()
                 }
             };
-            this.hide = function () {
+            this.hide = function() {
                 var G = D;
                 while (G) {
                     G.node().hide();
                     G = G.right()
                 }
             };
-            this.remove = function () {
+            this.remove = function() {
                 var G = D;
                 while (G) {
                     if (G.right()) {
@@ -1014,7 +1038,7 @@
         t = z.path(B.attr.arrow.path).attr(B.attr.arrow);
         x = new j();
         x.hide();
-        f = z.text(0, 0, B.text.text).attr(B.text).attr({text: B.text.text.replace("{from}", k.text()).replace("{to}", s.text())});
+        f = z.text(0, 0, B.text.text).attr(B.text).attr({ text: B.text.text.replace("{from}", k.text()).replace("{to}", s.text()) });
         //禁用连接线文字拖动
         /*f.drag(function (r, o) {
             /!* if (!flow.config.editable) {
@@ -1031,12 +1055,12 @@
 
         m();
         //线点击事件
-        zyb([i.node, t.node]).bind("click", function () {
+        zyb([i.node, t.node]).bind("click", function() {
             zyb(z).trigger("click", v);
             zyb(z).data("currNode", v);
             return false
         });
-        var l = function (r, C) {
+        var l = function(r, C) {
             //线点击监控
             if (C && C.getId() == g) {
                 x.show();
@@ -1053,18 +1077,18 @@
             }
         };
         zyb(z).bind("click", l);
-        var A = function (o, r) {
+        var A = function(o, r) {
             if (r && (r.getId() == k.getId() || r.getId() == s.getId())) {
                 zyb(z).trigger("removepath", v)
             }
         };
         zyb(z).bind("removenode", A);
-        var d = function (C, D) {
+        var d = function(C, D) {
             if (k && k.getId() == D.getId()) {
                 var o, st_st;
                 if (x.fromDot().right().right().type() == "to") {
                     st_st = 1;
-                    o = {x: s.getBBox().x + s.getBBox().width / 2, y: s.getBBox().y + s.getBBox().height / 2}
+                    o = { x: s.getBBox().x + s.getBBox().width / 2, y: s.getBBox().y + s.getBBox().height / 2 }
                 } else {
                     st_st = 2;
                     o = x.fromDot().right().right().pos()
@@ -1086,7 +1110,7 @@
             if (s && s.getId() == D.getId()) {
                 var o;
                 if (x.toDot().left().left().type() == "from") {
-                    o = {x: k.getBBox().x + k.getBBox().width / 2, y: k.getBBox().y + k.getBBox().height / 2}
+                    o = { x: k.getBBox().x + k.getBBox().width / 2, y: k.getBBox().y + k.getBBox().height / 2 }
                 } else {
                     o = x.toDot().left().left().pos()
                 }
@@ -1104,20 +1128,20 @@
             }
         };
         zyb(z).bind("noderesize", d);
-        var c = function (r, o, C) {
+        var c = function(r, o, C) {
             if (C.getId() == g) {
-                f.attr({text: o})
+                f.attr({ text: o })
             }
         };
         zyb(z).bind("textchange", c);
-        this.from = function () {
+        this.from = function() {
             return k
         };
-        this.to = function () {
+        this.to = function() {
             return s
         };
         //paths连接线部分拼写
-        this.toJson = function () {
+        this.toJson = function() {
             var r = '{"from":"' + k.getId() + '","to":"' + s.getId() + '","dots":"' + x.toJson() + '","text":{"text":"' + f.attr("text") + '"},"textPos":{"x":' + Math.round(h.x) + ',"y":' + Math.round(h.y) + '},"props":{';
             for (var o in B.props) {
                 r += '"' + o + '":{"value":"' + B.props[o].value + '"},'
@@ -1128,51 +1152,47 @@
             r += "}}";
             return r
         };
-        this.restore = function (o) {
+        this.restore = function(o) {
             var r = o;
             B = zyb.extend(true, B, o);
             x.restore(r.dots)
         };
-        this.remove = function () {
+        this.remove = function() {
             x.remove();
             i.remove();
             t.remove();
             f.remove();
             try {
                 zyb(z).unbind("click", l)
-            } catch (o) {
-            }
+            } catch (o) {}
             try {
                 zyb(z).unbind("removenode", A)
-            } catch (o) {
-            }
+            } catch (o) {}
             try {
                 zyb(z).unbind("noderesize", d)
-            } catch (o) {
-            }
+            } catch (o) {}
             try {
                 zyb(z).unbind("textchange", c)
-            } catch (o) {
-            }
+            } catch (o) {}
         };
 
         function m() {
             var r = x.toPathString(),
                 o = x.midDot().pos();
             if (r[0].indexOf("NaN") == -1 || r[1].indexOf("NaN") == -1) {
-                i.attr({path: r[0]});
-                t.attr({path: r[1]});
-                f.attr({x: o.x + h.x, y: o.y + h.y});
+                i.attr({ path: r[0] });
+                t.attr({ path: r[1] });
+                f.attr({ x: o.x + h.x, y: o.y + h.y });
             }
         }
 
-        this.getId = function () {
+        this.getId = function() {
             return g
         };
-        this.text = function () {
+        this.text = function() {
             return f.attr("text")
         };
-        this.attr = function (o) {
+        this.attr = function(o) {
             if (o && o.path) {
                 i.attr(o.path)
             }
@@ -1183,22 +1203,22 @@
         //连接线连接完毕后，定为到选择按钮，避免乱点节点，多次连接
         $("#pointer").click();
     };
-    flow.props = function (h, f) {
+    flow.props = function(h, f) {
         var j = this,
             // c = zyb("#jsworkflow_props").draggable({handle: "#jsworkflow_props_handle"}).resizable().css(flow.config.props.attr).bind("click", function () {
             //去掉默认加载属性框隐藏
-            c = zyb("#jsworkflow_props").hide().draggable({handle: "#jsworkflow_props_handle"}).resizable().css(flow.config.props.attr).bind("click", function () {
+            c = zyb("#jsworkflow_props").hide().draggable({ handle: "#jsworkflow_props_handle" }).resizable().css(flow.config.props.attr).bind("click", function() {
                 return false
             }),
             e = c.find("table"),
             g = f,
             i;
-        var d = function (n, m, o) {
+        var d = function(n, m, o) {
             if (i && i.getId() == o.getId()) {
                 return
             }
             i = o;
-            zyb(e).find(".editor").each(function () {
+            zyb(e).find(".editor").each(function() {
                 var k = zyb(this).data("editor");
                 if (k) {
                     k.destroy()
@@ -1216,65 +1236,65 @@
         zyb(g).bind("showprops", d)
     };
     flow.editors = {
-        textEditor: function () {
+        textEditor: function() {
             var d, e, c, g, f;
-            this.init = function (i, h, m, l, j) {
+            this.init = function(i, h, m, l, j) {
                 d = i;
                 e = h;
                 c = m;
                 g = l;
                 f = j;
-                zyb('<input  style="width:100%;"/>').val(g.text()).change(function () {
+                zyb('<input  style="width:100%;"/>').val(g.text()).change(function() {
                     i[e].value = zyb(this).val();
                     zyb(f).trigger("textchange", [zyb(this).val(), g])
                 }).appendTo("#" + c);
                 zyb("#" + c).data("editor", this)
             };
-            this.destroy = function () {
-                zyb("#" + c + " input").each(function () {
+            this.destroy = function() {
+                zyb("#" + c + " input").each(function() {
                     d[e].value = zyb(this).val();
                     zyb(f).trigger("textchange", [zyb(this).val(), g])
                 })
             }
         },
-        inputEditor: function () {
+        inputEditor: function() {
             var _props, _k, _div, _src, _r;
-            this.init = function (props, k, div, src, r) {
+            this.init = function(props, k, div, src, r) {
                 _props = props;
                 _k = k;
                 _div = div;
                 _src = src;
                 _r = r;
 
-                $('<input style="width:100%;"/>').val(props[_k].value).change(function () {
+                $('<input style="width:100%;"/>').val(props[_k].value).change(function() {
                     props[_k].value = $(this).val();
                 }).appendTo('#' + _div);
 
                 $('#' + _div).data('editor', this);
             }
-            this.destroy = function () {
-                $('#' + _div + ' input').each(function () {
+            this.destroy = function() {
+                $('#' + _div + ' input').each(function() {
                     _props[_k].value = $(this).val();
                 });
             }
         },
-        selectEditor: function (arg) {
+        selectEditor: function(arg) {
             //下拉框
             var _props, _k, _div, _src, _r;
-            this.init = function (props, k, div, src, r) {
+            this.init = function(props, k, div, src, r) {
                 _props = props;
                 _k = k;
                 _div = div;
                 _src = src;
                 _r = r;
-                var sle = $('<select  style="width:100%;"/>').val(props[_k].value).change(function () {
+                var sle = $('<select  style="width:100%;"/>').val(props[_k].value).change(function() {
                     props[_k].value = $(this).val();
                 }).appendTo('#' + _div);
                 if (typeof arg === 'string') {
                     $.ajax({
                         type: "GET",
                         url: arg,
-                        success: function (data) {
+                        success: function(data) {
                             var opts = eval(data);
                             if (opts && opts.length) {
                                 for (var idx = 0; idx < opts.length; idx++) {
@@ -1292,8 +1312,8 @@
                 }
                 $('#' + _div).data('editor', this);
             };
-            this.destroy = function () {
-                $('#' + _div + ' select').each(function () {
+            this.destroy = function() {
+                $('#' + _div + ' select').each(function() {
                     _props[_k].value = $(this).val();
                     //连接线文字赋值显示
                     if (_props[_k].name == 'linetype') {
@@ -1312,28 +1332,28 @@
                 });
             };
         },
-        textareaEditor: function () {
+        textareaEditor: function() {
             var _props, _k, _div, _src, _r;
-            this.init = function (props, k, div, src, r) {
+            this.init = function(props, k, div, src, r) {
                 _props = props;
                 _k = k;
                 _div = div;
                 _src = src;
                 _r = r;
-                $('<textarea rows="4" style="width:98%;"/>').val(props[_k].value).change(function () {
+                $('<textarea rows="4" style="width:98%;"/>').val(props[_k].value).change(function() {
                     props[_k].value = $(this).val();
                 }).appendTo('#' + _div);
 
                 $('#' + _div).data('editor', this);
             }
-            this.destroy = function () {
-                $('#' + _div + ' input').each(function () {
+            this.destroy = function() {
+                $('#' + _div + ' input').each(function() {
                     _props[_k].value = $(this).val();
                 });
             }
         }
     };
-    flow.init = function (x, r) {
+    flow.init = function(x, r) {
         zyb.extend(true, flow.config, r);
         var v = zyb(window).width(),
             e = zyb(window).height(),
@@ -1342,23 +1362,24 @@
             q = {},
             g = {};
         //工具集拖动
-        zyb("#jsworkflow_tools").draggable({handle: "#jsworkflow_tools_handle"}).css(flow.config.tools.attr);
-        zyb("#jsworkflow_tools .node").hover(function () {
+        zyb("#jsworkflow_tools").draggable({ handle: "#jsworkflow_tools_handle" }).css(flow.config.tools.attr);
+        zyb("#jsworkflow_tools .node").hover(function() {
             zyb(this).addClass("mover");
-        }, function () {
+        }, function() {
             zyb(this).removeClass("mover");
         });
-        zyb("#jsworkflow_tools .selectable").click(function () {
+        zyb("#jsworkflow_tools .selectable").click(function() {
             zyb(".selected").removeClass("selected");
             zyb(this).addClass("selected");
             zyb(y).data("mod", this.id);
         });
-        zyb("#jsworkflow_tools .state").each(function () {
-            zyb(this).draggable({helper: "clone"})
+        zyb("#jsworkflow_tools .state").each(function() {
+            zyb(this).draggable({ helper: "clone" })
         });
         //节点拖动
         zyb(x).droppable({
-            accept: ".state", drop: function (c, i) {
+            accept: ".state",
+            drop: function(c, i) {
                 zyb(y).trigger("addnode", [i.helper.attr("type"), {
                     attr: {
                         x: i.helper.offset().left,
@@ -1367,7 +1388,7 @@
                 }])
             }
         });
-        zyb(document).keydown(function (i) {
+        zyb(document).keydown(function(i) {
             if (!flow.config.editable) {
                 return
             }
@@ -1386,20 +1407,20 @@
                 }
             }
         });
-        zyb(document).click(function () {
+        zyb(document).click(function() {
             zyb(y).data("currNode", null);
             zyb(y).trigger("click", {
-                getId: function () {
+                getId: function() {
                     return "00000000"
                 }
             });
             zyb(y).trigger("showprops", [flow.config.props.props, {
-                getId: function () {
+                getId: function() {
                     return "00000000"
                 }
             }])
         });
-        var w = function (c, i) {
+        var w = function(c, i) {
             /* if (!flow.config.editable) {
                  return
              }*/
@@ -1415,11 +1436,11 @@
         };
         zyb(y).bind("removepath", w);
         zyb(y).bind("removenode", w);
-        zyb(y).bind("addnode", function (j, c, k) {
+        zyb(y).bind("addnode", function(j, c, k) {
             var i = new flow.node(zyb.extend(true, {}, flow.config.tools.nodes[c], k), y);
             q[i.getId()] = i;
         });
-        var f = function (i, k, j) {
+        var f = function(i, k, j) {
             var pathbool = true;
             var gg = {};
             var kjson = eval('(' + k.toJson() + ')');
@@ -1471,7 +1492,7 @@
         zyb(y).bind("addpath", f);
         zyb(y).data("mod", "point");
         //保存及结果验证
-        zyb("#jsworkflow_save").click(function () {
+        zyb("#jsworkflow_save").click(function() {
             if (!flow.config.editable) {
                 return
             }
@@ -1638,7 +1659,8 @@
                 return;
             }
             for (var obj1 in jiedian['judge']) {
-                var jiedianpathstr1 = true, jiedianpathstr2 = true;
+                var jiedianpathstr1 = true,
+                    jiedianpathstr2 = true;
                 if (judgepath2[obj1] == 'yesyes' || judgepath2[obj1] == 'nono') {
                     alert("同一个判断节点发出的连接线不能相同");
                     return;
@@ -1673,7 +1695,8 @@
             }
             //任务节点是否有发出或进入连接线
             for (var obj1 in jiedian['task']) {
-                var jiedianpathstr1 = true, jiedianpathstr2 = true;
+                var jiedianpathstr1 = true,
+                    jiedianpathstr2 = true;
                 for (var c in g) {
                     if (g[c] != null) {
                         var jdx = g[c].toJson();
@@ -1770,11 +1793,11 @@
         }
     };
     zyb.jsworkflow = flow;
-    zyb.fn.jsworkflow = function (c) {
-        return this.each(function () {
+    zyb.fn.jsworkflow = function(c) {
+        return this.each(function() {
             flow.init(this, c);
             // this.click();//默认点击，获取流程标题、描述等
-            $("#pointer").click();//定为按钮到"选择"
+            $("#pointer").click(); //定为按钮到"选择"
             fixDiv('jsworkflow_tools', 10);
             fixDiv('jsworkflow_props', 10);
             document.body.scrollTop = 1;
@@ -1796,7 +1819,7 @@
         // var isIE = /msie/.test(navigator.userAgent.toLowerCase()) && !$.support.leadingWhitespace;
         var isIE = $.browser.msie && $.browser.version == '6.0';
         if (isIE) {
-            $(window).scroll(function () {
+            $(window).scroll(function() {
                 if ($(window).scrollTop() <= ObjTop) {
                     Obj.css({
                         'position': 'relative',
@@ -1811,7 +1834,7 @@
                 }
             });
         } else {
-            $(window).scroll(function () {
+            $(window).scroll(function() {
                 if (div_id == 'jsworkflow_tools') {
                     Obj.css({
                         'position': 'fixed',
